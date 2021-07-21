@@ -42,7 +42,11 @@ export default function SearchEngine() {
 
   let openSource = (
     <small>
-      <a href=" https://github.com/Fidelia/weather-react" target="_blank">
+      <a
+        href=" https://github.com/Fidelia/weather-react"
+        target="_blank"
+        rel="noreferrer"
+      >
         Open-source code
       </a>{" "}
       by Fidelia Okandze
