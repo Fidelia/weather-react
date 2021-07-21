@@ -71,6 +71,6 @@ export default function SearchEngine() {
       </div>
     );
   } else {
-    return form, openSource;
+    return form;
   }
 }
