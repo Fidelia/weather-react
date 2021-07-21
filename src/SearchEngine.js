@@ -42,9 +42,9 @@ export default function SearchEngine() {
 
   let openSource = (
     <small>
-      <a href=" https://github.com/Fidelia/SheCodes" target="_blank">
+      <a href=" https://github.com/Fidelia/weather-react" target="_blank">
         Open-source code
-      </a>
+      </a>{" "}
       by Fidelia Okandze
     </small>
   );
