@@ -40,6 +40,15 @@ export default function SearchEngine() {
     </form>
   );
 
+  let openSource = (
+    <small>
+      <a href=" https://github.com/Fidelia/SheCodes" target="_blank">
+        Open-source code
+      </a>
+      by Fidelia Okandze
+    </small>
+  );
+
   if (onload) {
     return (
       <div>
@@ -54,9 +63,10 @@ export default function SearchEngine() {
             <img src={temp.icon} alt={temp.description} />
           </li>
         </ul>
+        {openSource}
       </div>
     );
   } else {
-    return form;
+    return form, openSource;
   }
 }
