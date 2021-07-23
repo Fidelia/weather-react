@@ -5,7 +5,7 @@ import "./WeatherSearch.css";
 export default function WeatherSearch() {
   const [city, setCity] = useState("");
   const [onload, setOnload] = useState(false);
-  const [temp, setTemp] = useState({});
+  const [temp, setTemp] = useState({onload:false});
 
   function showWeather(response) {
     setOnload(true);
