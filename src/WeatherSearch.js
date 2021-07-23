@@ -4,10 +4,11 @@ import "./WeatherSearch.css";
 
 export default function WeatherSearch() {
   const [city, setCity] = useState("");
+  const [onload, setOnload] = useState(false);
   const [temp, setTemp] = useState({});
 
   function showWeather(response) {
-    console.log(response.data);
+    setOnload(true);
     setTemp({
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
@@ -39,11 +40,12 @@ export default function WeatherSearch() {
     </form>
   );
 
+ if (onload) {
   return (
     <div className="WeatherSearch">
+      {form}
       <div className="row">
         <div className="col-6">
-          {form}
           <h1>{city}</h1>
           <ul>
             <li> Mon 12th Jul 2021 17:00</li>
@@ -65,4 +67,7 @@ export default function WeatherSearch() {
       </div>
     </div>
   );
+   } else {
+    return form;
+  }
 }
