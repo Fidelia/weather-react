@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "./Weather.css";
+import "./WeatherSearch.css";
 
-export default function Weather() {
+export default function WeatherSearch() {
   const [city, setCity] = useState("");
-  const [onload, setOnload] = useState(false);
   const [temp, setTemp] = useState({});
 
   function showWeather(response) {
-    setOnload(true);
     console.log(response.data);
     setTemp({
       temperature: response.data.main.temp,
@@ -41,37 +39,30 @@ export default function Weather() {
     </form>
   );
 
-  let openSource = (
-    <small>
-      <a
-        href=" https://github.com/Fidelia/weather-react"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Open-source code
-      </a>{" "}
-      by Fidelia Okandze
-    </small>
-  );
+  return (
+    <div className="WeatherSearch">
+      <div className="row">
+        <div className="col-6">
+          {form}
+          <h1>{city}</h1>
+          <ul>
+            <li> Mon 12th Jul 2021 17:00</li>
+            <li> {temp.description}</li>
+            <li>
+              {" "}
+              <img src={temp.icon} alt={temp.description} />
+            </li>
+          </ul>
+        </div>
 
-  if (onload) {
-    return (
-      <div>
-        {form}
-        <ul>
-          <li>Temperature: {Math.round(temp.temperature)} °C</li>
-          <li>Humidity: {temp.humidity}%</li>
-          <li>Wind: {Math.round(temp.wind)} km/h</li>
-          <li> Description: {temp.description}</li>
-          <li>
-            {" "}
-            <img src={temp.icon} alt={temp.description} />
-          </li>
-        </ul>
-        {openSource}
+        <div className="col-6">
+          <h2>{Math.round(temp.temperature)} °C</h2>
+          <ul>
+            <li>Humidity: {temp.humidity}%</li>
+            <li>Wind: {Math.round(temp.wind)} km/h</li>
+          </ul>
+        </div>
       </div>
-    );
-  } else {
-    return form;
-  }
+    </div>
+  );
 }
