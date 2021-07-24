@@ -7,7 +7,7 @@ function App() {
     <div className="App">
       <div className="container">
         <p className="App-header">
-          <br /> <WeatherSearch />
+          <br /> <WeatherSearch city="London" />
           <Forecast />
         </p>
       </div>

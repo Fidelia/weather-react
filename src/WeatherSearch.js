@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import axios from "axios";
 import "./WeatherSearch.css";
+import FormatDate from "./FormatDate";
 
-export default function WeatherSearch() {
+export default function WeatherSearch(props) {
   const [city, setCity] = useState("");
   const [onload, setOnload] = useState(false);
-  const [temp, setTemp] = useState({onload:false});
+  const [temp, setTemp] = useState({ onload: false });
 
   function showWeather(response) {
     setOnload(true);
     setTemp({
       temperature: response.data.main.temp,
       description: response.data.weather[0].description,
+      date: new Date(response.data.dt * 1000),
       humidity: response.data.main.humidity,
       wind: response.data.wind.speed,
       icon: `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`,
@@ -40,34 +42,37 @@ export default function WeatherSearch() {
     </form>
   );
 
- if (onload) {
-  return (
-    <div className="WeatherSearch">
-      {form}
-      <div className="row">
-        <div className="col-6">
-          <h1>{city}</h1>
-          <ul>
-            <li> Mon 12th Jul 2021 17:00</li>
-            <li> {temp.description}</li>
-            <li>
-              {" "}
-              <img src={temp.icon} alt={temp.description} />
-            </li>
-          </ul>
-        </div>
+  if (onload) {
+    return (
+      <div className="WeatherSearch">
+        {form}
+        <div className="row">
+          <div className="col-6">
+            <h1>{city}</h1>
+            <ul>
+              <li>
+                {" "}
+                <FormatDate date={temp.date} />{" "}
+              </li>
+              <li> {temp.description}</li>
+              <li>
+                {" "}
+                <img src={temp.icon} alt={temp.description} />
+              </li>
+            </ul>
+          </div>
 
-        <div className="col-6">
-          <h2>{Math.round(temp.temperature)} °C</h2>
-          <ul>
-            <li>Humidity: {temp.humidity}%</li>
-            <li>Wind: {Math.round(temp.wind)} km/h</li>
-          </ul>
+          <div className="col-6">
+            <h2>{Math.round(temp.temperature)} °C</h2>
+            <ul>
+              <li>Humidity: {temp.humidity}%</li>
+              <li>Wind: {Math.round(temp.wind)} km/h</li>
+            </ul>
+          </div>
         </div>
       </div>
-    </div>
-  );
-   } else {
+    );
+  } else {
     return form;
   }
 }
