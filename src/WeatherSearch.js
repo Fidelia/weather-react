@@ -6,11 +6,11 @@ import "./WeatherSearch.css";
 
 export default function WeatherSearch(props) {
   const [city, setCity] = useState(props.defaultCity);
-  const [temp, setTemp] = useState();
-  const [onload, setOnload] = useState(false);
+  const [temp, setTemp] = useState({ onload: false });
 
   function showWeather(response) {
     setTemp({
+      onload: true,
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
@@ -19,7 +19,6 @@ export default function WeatherSearch(props) {
       wind: response.data.wind.speed,
       icon: response.data.weather[0].icon,
     });
-    setOnload(true);
   }
   function search() {
     const apiKey = "42d452330bfdae27782fbf2b6fe4218a";
@@ -36,7 +35,7 @@ export default function WeatherSearch(props) {
     setCity(event.target.value);
   }
 
-  if (onload) {
+  if (temp.onload) {
     return (
       <div className="WeatherSearch">
         <form onSubmit={submit}>
