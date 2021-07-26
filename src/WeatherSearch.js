@@ -47,7 +47,7 @@ export default function WeatherSearch(props) {
           />
           <input type="submit" value="Search" className="btn btn-primary" />
         </form>
-        <WeatherInfo info={WeatherSearch} />
+        <WeatherInfo info={temp} />
       </div>
     );
   } else {
