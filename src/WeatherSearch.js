@@ -45,7 +45,7 @@ export default function WeatherSearch(props) {
             className="form-search"
             onChange={updateCity}
           />
-          <input type="submit" value="Search" className="btn btn-primary" />
+          <input type="submit" value="Search" className="button" />
         </form>
         <WeatherInfo info={temp} />
       </div>
