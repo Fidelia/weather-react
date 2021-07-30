@@ -11,6 +11,7 @@ export default function WeatherSearch(props) {
   function showWeather(response) {
     setTemp({
       onload: true,
+      coordinates: response.data.coord,
       city: response.data.name,
       date: new Date(response.data.dt * 1000),
       temperature: response.data.main.temp,
@@ -48,7 +49,7 @@ export default function WeatherSearch(props) {
           <input type="submit" value="Search" className="button" />
         </form>
         <WeatherInfo info={temp} />
-        <Forecast />
+        <Forecast coordinates={temp.coordinates} />
       </div>
     );
   } else {
