@@ -13,7 +13,7 @@ export default function Forecast(props) {
         return load();
       }
     },
-    [props.coordinates]
+    [props.coordinates, load]
   );
 
   function load() {
