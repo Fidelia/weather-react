@@ -1,9 +1,12 @@
 .temp {
   color: white;
   text-align: right;
-  list-style: none;
+  margin-right: 100px;
 }
 .info {
-  list-style: none;
   color: white;
+}
+li {
+  list-style: none;
+  font-size: 20px;
 }
